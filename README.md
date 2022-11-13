@@ -35,7 +35,7 @@ descargar el archivo .zip del repositorio para tener acceso a los arcvhivos
 
 ## IDE USADO
 
-![Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/IntelliJ_IDEA_Icon.svg/1024px-IntelliJ_IDEA_Icon.svg.png)
+![Logo](http://daviddelatorre.me/wp-content/uploads/2017/06/intellij.png)
 
 ## License
 
