@@ -20,10 +20,9 @@ descargar el archivo .zip del repositorio para tener acceso a los arcvhivos
 
 ## LENGUAJES USADOS
 
-![Logo](https://1000marcas.net/wp-content/uploads/2020/11/Java-logo.png)
 ![LOGO](https://hibernate.org/images/hibernate-logo.svg)
-![LGO](https://www.adictosaltrabajo.com/wp-content/uploads/2020/03/hibernate.jpg)
 
+![Logo](https://1000marcas.net/wp-content/uploads/2020/11/Java-logo.png)
 
 ## LENGAUJES DE BASES DE DATOS
 
