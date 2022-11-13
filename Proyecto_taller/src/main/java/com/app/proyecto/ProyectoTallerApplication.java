@@ -5,7 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.app.proyecto.jpa.ArtistaRepository;
+import com.app.proyecto.repository.ArtistaRepository;
 
 @SpringBootApplication
 public class ProyectoTallerApplication implements CommandLineRunner {
