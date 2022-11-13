@@ -1,5 +1,19 @@
 # ApiRest-SpringBoot-Taller3
-ApiRest realizada con SpringBoot como proyecto final para la materia de taller de desarrollo 3
+Una compañía de productora de música propiedad de SONYYT Music fundada en el
+año de 2020; requieren de la asesoría especializada de expertos en software para diseñar una
+solución tecnológica que les permita ofertar el servicio a sus clientes de reproducción de
+música y control de playlist personalizados.
+Por lo anterior, el equipo de Developers contratado ha elaborado un informe de
+análisis de los requerimientos funcionales emitidos por los directivos de la compañía,
+consiste en diseñar una solución tecnológica basada en una Arquitectura Orientada a
+Servicios que permita un funcionamiento de 24/7 a través de Internet. Los elementos
+principales de este informe son:
+ La API brindará acceso a datos relacionados con el usuario, permitiendo
+definir sus datos de perfil personal y crear listas de reproducción de música
+que el usuario guarda en su biblioteca.
+ La dirección base de la API web es https://unachotify.com/api
+ La API debe considerar la administración de Artistas, Álbum y Canciones.
+ El formato de salida para la transferencia de información debe ser JSON.
 
 ## Autores
 
