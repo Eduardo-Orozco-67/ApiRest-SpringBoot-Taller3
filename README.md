@@ -12,9 +12,12 @@ principales de este informe son:
 * La API brindará acceso a datos relacionados con el usuario, permitiendo
 definir sus datos de perfil personal y crear listas de reproducción de música
 que el usuario guarda en su biblioteca.
-*La dirección base de la API web es https://unachotify.com/api
-*La API debe considerar la administración de Artistas, Álbum y Canciones.
-*El formato de salida para la transferencia de información debe ser JSON.
+
+* La dirección base de la API web es https://unachotify.com/api
+
+* La API debe considerar la administración de Artistas, Álbum y Canciones.
+
+* El formato de salida para la transferencia de información debe ser JSON.
 
 ## Autores
 
