@@ -35,6 +35,7 @@ descargar el archivo .zip del repositorio para tener acceso a los arcvhivos
 
 ## IDE USADO
 
+![Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/IntelliJ_IDEA_Icon.svg/1024px-IntelliJ_IDEA_Icon.svg.png)
 
 ## License
 
