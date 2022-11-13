@@ -35,7 +35,7 @@ descargar el archivo .zip del repositorio para tener acceso a los arcvhivos
 
 ## IDE USADO
 
-![Logo](http://daviddelatorre.me/wp-content/uploads/2017/06/intellij.png)
+![Logo](https://financesonline.com/uploads/2019/08/IntelliJ-Idea-logo1.png)
 
 ## License
 
