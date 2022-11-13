@@ -21,8 +21,8 @@ descargar el archivo .zip del repositorio para tener acceso a los arcvhivos
 ## LENGUAJES USADOS
 
 ![Logo](https://1000marcas.net/wp-content/uploads/2020/11/Java-logo.png)
-            ![Logo](https://blog.desafiolatam.com/wp-content/uploads/2018/05/sql-logo.png)
-                   ![Logo](https://www.hatthieves.es/wp-content/uploads/2019/09/16-420x300.png)
+![Logo](https://blog.desafiolatam.com/wp-content/uploads/2018/05/sql-logo.png)
+![Logo](https://www.hatthieves.es/wp-content/uploads/2019/09/16-420x300.png)
 
 ## Motor de Bases de Datos Usado
 
