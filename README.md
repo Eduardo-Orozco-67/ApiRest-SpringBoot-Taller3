@@ -14,19 +14,22 @@ descargar el archivo .zip del repositorio para tener acceso a los arcvhivos
 
 ![App Screenshot](https://br.atsit.in/es/wp-content/uploads/2021/06/como-descargar-archivos-y-ver-codigo-desde-github-9.png)
 
-NOTA: el archivo .asm para ver el código es proyecto.asm
-
-
 ## FRAMEWORK USADO
 
 ![LOGO](https://niixer.com/wp-content/uploads/2020/11/spring-boot.png)
 
 ## LENGUAJES USADOS
 
+![LOGO](https://niixer.com/wp-content/uploads/2020/11/spring-boot.png)
+![Logo](https://1000marcas.net/wp-content/uploads/2020/11/Java-logo.png)
+![Logo](https://blog.desafiolatam.com/wp-content/uploads/2018/05/sql-logo.png)
+![Logo](https://www.hatthieves.es/wp-content/uploads/2019/09/16-420x300.png)
 
+## Motor de Bases de Datos Usado
+
+![Logo](https://cdn.icon-icons.com/icons2/2415/PNG/512/postgresql_original_wordmark_logo_icon_146392.png)
 
 ## IDE USADO
-
 
 
 ## License
