@@ -25,36 +25,36 @@ public class ArtistaController {
     @Autowired
     private IArtistasService lognegocioArtista;
 
-    @GetMapping("/artistas")
+    @GetMapping("/artistas/ver")
     public List<Artista> muestratodosArtistas(){
         return lognegocioArtista.consultarTodoslosArtistas();
     }
 
-    @GetMapping("/artistas/nom/{nombre}")
+    @GetMapping("/artistas/ver/{nombre}")
     public ResponseEntity<?> muestraporNombre(@PathVariable("nombre") String nom){
         return lognegocioArtista.consultarbyNombre(nom);
     }
 
-    @GetMapping("/artistas/{id}")
+    @GetMapping("/artistas/ver/{id}")
     public ResponseEntity<Artista> localizar(@PathVariable("id") int idCat){
         return lognegocioArtista.consultarUno(idCat);
     }
 
-    @DeleteMapping("/artistas/{id}")
+    @PutMapping("/artistas/actualizar/{id}")
+    public String actualizar(@RequestBody Artista obj, @PathVariable("id") int idArt){
+        lognegocioArtista.actualizarArtista(obj, idArt);
+        return "El o La artista fue actualizado(a) correctamente";
+    }
+
+    @DeleteMapping("/artistas/eliminar/{id}")
     public ResponseEntity<?> eliminar(@PathVariable("id") int idArt){
         return lognegocioArtista.eliminarArtista(idArt);
 
     }
 
-    @PostMapping("/artistas")
-    public String insertar(@RequestBody Artista objcat){
-        lognegocioArtista.insertarArtista(objcat);
+    @PostMapping("/artistas/guardar")
+    public String insertar(@RequestBody Artista objart){
+        lognegocioArtista.insertarArtista(objart);
         return "El o La artista fue registrado(a) correctamente";
-    }
-
-    @PutMapping("/categorias/{id}")
-    public String actualizar(@RequestBody Artista obj, @PathVariable("id") int idArt){
-        lognegocioArtista.actualizarArtista(obj, idArt);
-        return "El o La artista fue actualizado(a) correctamente";
     }
 }

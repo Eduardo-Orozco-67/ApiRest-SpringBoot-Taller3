@@ -24,7 +24,7 @@ private ArtistaRepository ArtistaRepo;
 
         List<Artista> result = ArtistaRepo.findAll();
         if(result.isEmpty())
-            throw new ResourceNotFoundException("No existe categorías registradas en la BD");
+            throw new ResourceNotFoundException("No existe ese artista registrado(a) en la BD");
 
         return ArtistaRepo.findAll();
     }
@@ -37,17 +37,17 @@ private ArtistaRepository ArtistaRepo;
 
     @Override
     public ResponseEntity<Artista>consultarbyNombre(String nombre) {
-        Artista objcat = ArtistaRepo.findByNombre(nombre);
-        if (objcat==null)
+        Artista objart = ArtistaRepo.findByNombre(nombre);
+        if (objart==null)
             throw new ResourceNotFoundException("No existe un Artista con el nombre :" + nombre);
 
-        return ResponseEntity.ok(objcat);
+        return ResponseEntity.ok(objart);
     }
 
     @Override
     public ResponseEntity<Map<String, String>> insertarArtista(Artista obj) {
         Map<String, String> okResponse = new HashMap<>();
-        okResponse.put("message", "La Categoría se ha registrado correctamente");
+        okResponse.put("message", "El artista se ha registrado correctamente");
         okResponse.put("status", HttpStatus.CREATED.toString());
         ArtistaRepo.save(obj);
         return new ResponseEntity<>(okResponse,HttpStatus.CREATED);
@@ -56,11 +56,11 @@ private ArtistaRepository ArtistaRepo;
     @Override
     public ResponseEntity<Map<String, String>> actualizarArtista(Artista obj, int idArt) {
         Map<String, String> okResponse = new HashMap<>();
-        okResponse.put("message", "Los datos de la categoría se actualizaron correctamente");
+        okResponse.put("message", "El artista se actualizo correctamente");
         okResponse.put("status", HttpStatus.OK.toString());
 
         Map<String, String> errorResponse = new HashMap<>();
-        errorResponse.put("message", "No existe Categoría con el Id: " + idArt);
+        errorResponse.put("message", "No existe un artista con el Id: " + idArt);
         errorResponse.put("status", HttpStatus.NOT_FOUND.toString());
 
         return ArtistaRepo.findById(idArt).map( p -> {
@@ -76,11 +76,11 @@ private ArtistaRepository ArtistaRepo;
     public ResponseEntity<Map<String, String>> eliminarArtista(int idArt) {
 
         Map<String, String> errorResponse = new HashMap<>();
-        errorResponse.put("message", "Ese articulo no fue encontrado");
+        errorResponse.put("message", "Ese artista no fue encontrado");
         errorResponse.put("status", HttpStatus.NOT_FOUND.toString());
 
         Map<String, String> okResponse = new HashMap<>();
-        okResponse.put("message", "El articulo fue eliminado correctamente");
+        okResponse.put("message", "El artista fue eliminado correctamente");
         okResponse.put("status", HttpStatus.OK.toString());
 
         return ArtistaRepo.findById(idArt).map( p -> {
