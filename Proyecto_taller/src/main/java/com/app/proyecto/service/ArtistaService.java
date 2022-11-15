@@ -21,11 +21,9 @@ public class ArtistaService implements IArtistasService {
 
     @Override
     public List<Artista> consultarTodoslosArtistas() {
-
         List<Artista> result = ArtistaRepo.findAll();
         if(result.isEmpty())
             throw new ResourceNotFoundException("No existe ese artista registrado(a) en la BD");
-
         return ArtistaRepo.findAll();
     }
 
@@ -69,7 +67,6 @@ public class ArtistaService implements IArtistasService {
                     return new ResponseEntity<>(okResponse, HttpStatus.OK);
                 })
                 .orElse(new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND));
-
     }
 
     @Override
