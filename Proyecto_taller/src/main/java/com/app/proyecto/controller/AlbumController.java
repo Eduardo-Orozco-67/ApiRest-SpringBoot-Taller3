@@ -17,33 +17,33 @@ public class AlbumController {
     @Autowired
     private IAlbumService lognegocioAlbum;
 
-    @GetMapping("/album")
+    @GetMapping("/album/ver")
     public List<Album> muestratodoslosalbumes(){
         return lognegocioAlbum.consultarTodoslosAlbums();
     }
 
-    @GetMapping("/album/nom/{nombre}")
+    @GetMapping("/album/ver/{nombre}")
     public ResponseEntity<?> muestraporNombre(@PathVariable("nombre") String nom){
         return lognegocioAlbum.consultarbyNombre(nom);
     }
 
-    @GetMapping("/album/{id}")
+    @GetMapping("/album/ver/{id}")
     public ResponseEntity<Album> localizar(@PathVariable("id") int idalbum){
         return lognegocioAlbum.consultarUno(idalbum);
     }
 
-    @DeleteMapping("/album/{id}")
+    @DeleteMapping("/album/eliminar/{id}")
     public ResponseEntity<?> eliminar(@PathVariable("id") int idalbum){
         return lognegocioAlbum.eliminarAlbum(idalbum);
     }
 
-    @PostMapping("/album")
+    @PostMapping("/album/guardar")
     public String insertar(@RequestBody Album objalbum){
         lognegocioAlbum.insertarAlbum(objalbum);
         return "El o El Album fue registrado correctamente";
     }
 
-    @PutMapping("/album/{id}")
+    @PutMapping("/album/actualizar/{id}")
     public String actualizar(@RequestBody Album obj, @PathVariable("id") int idalbum){
         lognegocioAlbum.actualizarAlbum(obj, idalbum);
         return "El o El Album fue actualizado correctamente";
