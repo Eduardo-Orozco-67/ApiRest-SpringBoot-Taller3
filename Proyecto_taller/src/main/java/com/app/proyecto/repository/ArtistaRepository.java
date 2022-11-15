@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ArtistaRepository extends JpaRepository<Artista, Integer>{
 	
-	@Query("select o from Artista o where o.nombreArtista like ?1")
+	@Query("select o from Artista o where o.nombreArtista like ?1% ")
 	Artista findByNombre (String nombre);
 
 

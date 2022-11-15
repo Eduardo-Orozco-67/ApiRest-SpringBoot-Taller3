@@ -36,8 +36,8 @@ public class ArtistaController {
     }
 
     @GetMapping("/artistas/ver/idar/{id}")
-    public ResponseEntity<Artista> localizar(@PathVariable("id") int idCat){
-        return lognegocioArtista.consultarUno(idCat);
+    public ResponseEntity<Artista> localizar(@PathVariable("id") int idArt){
+        return lognegocioArtista.consultarUno(idArt);
     }
 
     @PutMapping("/artistas/actualizar/{id}")

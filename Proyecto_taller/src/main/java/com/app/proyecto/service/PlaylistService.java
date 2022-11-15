@@ -51,7 +51,7 @@ public class PlaylistService implements IPlaylistService{
     }
 
     @Override
-    public ResponseEntity<Map<String, String>> actualizarPlaylistPlaylist(Playlist obj, int idPlay) {
+    public ResponseEntity<Map<String, String>> actualizarPlaylist(Playlist obj, int idPlay) {
         Map<String, String> okResponse = new HashMap<>();
         okResponse.put("message", "El artista se actualizo correctamente");
         okResponse.put("status", HttpStatus.OK.toString());

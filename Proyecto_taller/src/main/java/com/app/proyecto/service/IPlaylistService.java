@@ -15,7 +15,7 @@ public interface IPlaylistService {
 
     ResponseEntity<Map<String, String>> insertarArtista(Playlist obj);
 
-    ResponseEntity<Map<String, String>> actualizarPlaylistPlaylist(Playlist obj, int idPlay);
+    ResponseEntity<Map<String, String>> actualizarPlaylist(Playlist obj, int idPlay);
 
     ResponseEntity<Map<String, String>> eliminarPlaylist(int idPlay);
 }
