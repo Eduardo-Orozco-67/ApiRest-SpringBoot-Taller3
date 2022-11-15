@@ -7,34 +7,34 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import com.app.proyecto.entity.Artista;
-import com.app.proyecto.repository.ArtistaRepository;
+import com.app.proyecto.entity.Playlist;
+import com.app.proyecto.repository.PlaylistRepository;
 import org.springframework.stereotype.Service;
 import com.app.proyecto.exception.ResourceNotFoundException;
 
 @Service
-public class ArtistaService implements IArtistasService {
+public class PlaylistService implements IPlaylistService{
 
     @Autowired
-    private ArtistaRepository ArtistaRepo;
+    private PlaylistRepository PlayRepo;
 
     @Override
-    public List<Artista> consultarTodoslosArtistas() {
-        List<Artista> result = ArtistaRepo.findAll();
+    public List<Playlist> consultarTodoslosArtistas() {
+        List<Playlist> result = PlayRepo.findAll();
         if(result.isEmpty())
             throw new ResourceNotFoundException("No existe ese artista registrado(a) en la BD");
-        return ArtistaRepo.findAll();
+        return PlayRepo.findAll();
     }
 
     @Override
-    public ResponseEntity<Artista> consultarUno(int idArt) {
-        Artista obj = ArtistaRepo.findById(idArt).orElseThrow(() -> new ResourceNotFoundException("No existe Artista con el Id :" + idArt));
+    public ResponseEntity<Playlist> consultarUno(int idPlay) {
+        Playlist obj = PlayRepo.findById(idPlay).orElseThrow(() -> new ResourceNotFoundException("No existe Artista con el Id :" + idPlay));
         return ResponseEntity.ok(obj);
     }
 
     @Override
-    public ResponseEntity<Artista>consultarbyNombre(String nombre) {
-        Artista objart = ArtistaRepo.findByNombre(nombre);
+    public ResponseEntity<Playlist>consultarbyNombredePlaylis(String nombre) {
+        Playlist objart = PlayRepo.findByNombre(nombre);
         if (objart==null)
             throw new ResourceNotFoundException("No existe un Artista con el nombre :" + nombre);
 
@@ -42,34 +42,34 @@ public class ArtistaService implements IArtistasService {
     }
 
     @Override
-    public ResponseEntity<Map<String, String>> insertarArtista(Artista obj) {
+    public ResponseEntity<Map<String, String>> insertarArtista(Playlist obj) {
         Map<String, String> okResponse = new HashMap<>();
         okResponse.put("message", "El artista se ha registrado correctamente");
         okResponse.put("status", HttpStatus.CREATED.toString());
-        ArtistaRepo.save(obj);
+        PlayRepo.save(obj);
         return new ResponseEntity<>(okResponse,HttpStatus.CREATED);
     }
 
     @Override
-    public ResponseEntity<Map<String, String>> actualizarArtista(Artista obj, int idArt) {
+    public ResponseEntity<Map<String, String>> actualizarPlaylist(Playlist obj, int idPlay) {
         Map<String, String> okResponse = new HashMap<>();
         okResponse.put("message", "El artista se actualizo correctamente");
         okResponse.put("status", HttpStatus.OK.toString());
 
         Map<String, String> errorResponse = new HashMap<>();
-        errorResponse.put("message", "No existe un artista con el Id: " + idArt);
+        errorResponse.put("message", "No existe un artista con el Id: " + idPlay);
         errorResponse.put("status", HttpStatus.NOT_FOUND.toString());
 
-        return ArtistaRepo.findById(idArt).map( p -> {
-                    obj.setId_artista(idArt);
-                    ArtistaRepo.save(obj);
+        return PlayRepo.findById(idPlay).map( p -> {
+                    obj.setId_playlist(idPlay);
+                    PlayRepo.save(obj);
                     return new ResponseEntity<>(okResponse, HttpStatus.OK);
                 })
                 .orElse(new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND));
     }
 
     @Override
-    public ResponseEntity<Map<String, String>> eliminarArtista(int idArt) {
+    public ResponseEntity<Map<String, String>> eliminarPlaylist(int idPlay) {
 
         Map<String, String> errorResponse = new HashMap<>();
         errorResponse.put("message", "Ese artista no fue encontrado");
@@ -79,12 +79,11 @@ public class ArtistaService implements IArtistasService {
         okResponse.put("message", "El artista fue eliminado correctamente");
         okResponse.put("status", HttpStatus.OK.toString());
 
-        return ArtistaRepo.findById(idArt).map( p -> {
-                    ArtistaRepo.deleteById(idArt);
+        return PlayRepo.findById(idPlay).map( p -> {
+                    PlayRepo.deleteById(idPlay);
                     return new ResponseEntity<>(okResponse, HttpStatus.OK);
                 })
                 .orElse(new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND));
 
     }
 }
-
