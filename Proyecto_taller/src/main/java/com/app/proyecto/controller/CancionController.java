@@ -32,12 +32,12 @@ public class CancionController {
         return lognegocioCancion.consultarTodaslasCanciones();
     }
 
-    @GetMapping("/canciones/ver/{nombreCancion}")
+    @GetMapping("/canciones/ver/nombrec/{nombreCancion}")
     public ResponseEntity<?> muestraporNombreCan(@PathVariable("nombreCancion") String nombreCan){
         return lognegocioCancion.consultarbyNombreCancion(nombreCan);
     }
 
-    @GetMapping("/canciones/ver/{id}")
+    @GetMapping("/canciones/ver/idc/{id}")
     public ResponseEntity<Cancion> localizar(@PathVariable("id") int idCan){
         return lognegocioCancion.consultarUna(idCan);
     }

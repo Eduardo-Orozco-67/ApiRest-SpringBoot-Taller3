@@ -19,13 +19,8 @@ public class ProyectoTallerApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		System.out.println("Bienvenidos al Taller de Spring DATA JPA ");
-		System.out.println("Paso 1. Insertar 3 materiales en el inventario ");
-		//Guardar un registro		
-		//inventRepo.save(new Inventario ("JDP78", "MOUSE", "HP", 2018));
-		/*Inventario obj1 = new Inventario ("DRT6110", "Teclado", "Dell", 2019);
-		inventRepo.save(obj1);*/
-		
+		System.out.println("Bienvenidos al API REST DE U´BEAT");
+		System.out.println("URL: http://localhost:5009/swagger-ui.html#");
 		
 	}
 

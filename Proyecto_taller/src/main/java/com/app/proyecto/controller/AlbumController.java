@@ -22,12 +22,12 @@ public class AlbumController {
         return lognegocioAlbum.consultarTodoslosAlbums();
     }
 
-    @GetMapping("/album/ver/{nombre}")
+    @GetMapping("/album/ver/nombrea/{nombre}")
     public ResponseEntity<?> muestraporNombre(@PathVariable("nombre") String nom){
         return lognegocioAlbum.consultarbyNombre(nom);
     }
 
-    @GetMapping("/album/ver/{id}")
+    @GetMapping("/album/ver/ida/{id}")
     public ResponseEntity<Album> localizar(@PathVariable("id") int idalbum){
         return lognegocioAlbum.consultarUno(idalbum);
     }

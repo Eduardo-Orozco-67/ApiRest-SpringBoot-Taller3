@@ -30,12 +30,12 @@ public class ArtistaController {
         return lognegocioArtista.consultarTodoslosArtistas();
     }
 
-    @GetMapping("/artistas/ver/{nombre}")
+    @GetMapping("/artistas/ver/nombrear/{nombre}")
     public ResponseEntity<?> muestraporNombre(@PathVariable("nombre") String nom){
         return lognegocioArtista.consultarbyNombre(nom);
     }
 
-    @GetMapping("/artistas/ver/{id}")
+    @GetMapping("/artistas/ver/idar/{id}")
     public ResponseEntity<Artista> localizar(@PathVariable("id") int idCat){
         return lognegocioArtista.consultarUno(idCat);
     }
