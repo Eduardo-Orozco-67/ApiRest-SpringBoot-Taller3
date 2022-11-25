@@ -1,14 +1,9 @@
 package com.app.proyecto.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_cancion")
@@ -29,10 +24,22 @@ public class Cancion {
 
     @Column(name = "Duracion")
     private int duracion;
-    
-    @ManyToMany(mappedBy = "canciones")
+
+	@JoinTable(
+			name = "relacion_album_cancion",
+			joinColumns = @JoinColumn(name = "id_Album", nullable = false),
+			inverseJoinColumns = @JoinColumn(name="id_Cancion", nullable = false)
+	)
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Album> albums;
-    
+
+	public void addAlbum(Album album){
+		if(this.albums == null){
+			this.albums = new ArrayList<>();
+		}
+		this.albums.add(album);
+	}
+
 	public Cancion() {
 		super();
 	}

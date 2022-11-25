@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.app.proyecto.entity.Artista;
+import com.app.proyecto.entity.Cancion;
+import com.app.proyecto.repository.CancionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +21,12 @@ public class AlbumService implements IAlbumService{
 
     @Autowired
     private AlbumRepository AlbumRepo;
-
     @Override
     public List<Album> consultarTodoslosAlbums() {
         List<Album> result = AlbumRepo.findAll();
         if(result.isEmpty())
             throw new ResourceNotFoundException("No existen albumes registrados en la BD");
-
-        return AlbumRepo.findAll();
+        return result;
     }
 
     @Override
@@ -49,7 +49,6 @@ public class AlbumService implements IAlbumService{
         Map<String, String> okResponse = new HashMap<>();
         okResponse.put("message", "El album se ha registrado correctamente");
         okResponse.put("status", HttpStatus.CREATED.toString());
-        AlbumRepo.save(obj);
         return new ResponseEntity<>(okResponse,HttpStatus.CREATED);
     }
 
