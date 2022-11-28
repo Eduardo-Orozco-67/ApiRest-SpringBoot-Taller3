@@ -18,14 +18,6 @@ public class CancionService implements ICancionService {
     @Autowired
     private CancionRepository CancRepo;
 
-    @Override
-    public List<Cancion> consultarTodaslasCanciones()
-    {
-        List<Cancion> result = CancRepo.findAll();
-        if(result.isEmpty())
-            throw new ResourceNotFoundException("No existe esa cancion registrado(a) en la BD");
-        return CancRepo.findAll();
-    }
 
     @Override
     public ResponseEntity<Cancion> consultarUna(int idCan)

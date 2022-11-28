@@ -1,7 +1,12 @@
 package com.app.proyecto.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -25,33 +30,35 @@ public class Cancion {
     @Column(name = "Duracion")
     private int duracion;
 
-	@JoinTable(
-			name = "relacion_album_cancion",
-			joinColumns = @JoinColumn(name = "id_Album", nullable = false),
-			inverseJoinColumns = @JoinColumn(name="id_Cancion", nullable = false)
-	)
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Album> albums;
+	@ManyToMany(fetch = FetchType.LAZY,
+			cascade = {
+					CascadeType.PERSIST,
+					CascadeType.MERGE
+			},
+			mappedBy = "canciones1")
+	@JsonIgnore
+	private Set<Album> albums = new HashSet<>();
 
-	public void addAlbum(Album album){
-		if(this.albums == null){
-			this.albums = new ArrayList<>();
-		}
-		this.albums.add(album);
-	}
+	@ManyToMany(fetch = FetchType.LAZY,
+			cascade = {
+					CascadeType.PERSIST,
+					CascadeType.MERGE
+			},
+			mappedBy = "canciones")
+	@JsonIgnore
+	private Set<Playlist> playlists= new HashSet<>();
 
 	public Cancion() {
 		super();
 	}
 
-	public Cancion(int idCancion, String nombreCancion, int anio, String genero, int duracion, List<Album> albums) {
+	public Cancion(int idCancion, String nombreCancion, int anio, String genero, int duracion) {
 		super();
 		this.idCancion = idCancion;
 		this.nombreCancion = nombreCancion;
 		this.anio = anio;
 		this.genero = genero;
 		this.duracion = duracion;
-		this.albums = albums;
 	}
 
 	public int getIdCancion() {
@@ -94,11 +101,19 @@ public class Cancion {
 		this.duracion = duracion;
 	}
 
-	public List<Album> getAlbums() {
+	public void setAlbums(Set<Album> albums) {
+		this.albums = albums;
+	}
+
+	public Set<Album> getAlbums() {
 		return albums;
 	}
 
-	public void setAlbums(List<Album> albums) {
-		this.albums = albums;
-	}   
+	public Set<Playlist> getPlaylists() {
+		return playlists;
+	}
+
+	public void setPlaylists(Set<Playlist> playlists) {
+		this.playlists = playlists;
+	}
 }

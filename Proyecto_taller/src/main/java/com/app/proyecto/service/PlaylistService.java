@@ -18,13 +18,6 @@ public class PlaylistService implements IPlaylistService{
     @Autowired
     private PlaylistRepository PlayRepo;
 
-    @Override
-    public List<Playlist> consultarTodoslosArtistas() {
-        List<Playlist> result = PlayRepo.findAll();
-        if(result.isEmpty())
-            throw new ResourceNotFoundException("No existe ese artista registrado(a) en la BD");
-        return PlayRepo.findAll();
-    }
 
     @Override
     public ResponseEntity<Playlist> consultarUno(int idPlay) {

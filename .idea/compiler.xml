@@ -7,14 +7,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Proyecto_taller" />
+        <module name="ApiRest-SpringBoot-Taller3" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ApiRest-SpringBoot-Taller3" target="17" />
       <module name="Proyecto_taller" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ApiRest-SpringBoot-Taller3" options="-parameters" />
       <module name="Proyecto_taller" options="-parameters" />
     </option>
   </component>

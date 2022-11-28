@@ -8,8 +8,6 @@ import org.springframework.http.ResponseEntity;
 
 public interface IAlbumService {
 
-    List<Album> consultarTodoslosAlbums();
-
     ResponseEntity<Album> consultarUno(int idalbum);
 
     ResponseEntity<Album>consultarbyNombre(String nombre);

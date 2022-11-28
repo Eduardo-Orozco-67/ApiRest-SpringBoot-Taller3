@@ -1,7 +1,10 @@
 package com.app.proyecto.controller;
 
 import java.util.List;
+
+import com.app.proyecto.repository.ArtistaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,6 +27,9 @@ public class ArtistaController {
 
     @Autowired
     private IArtistasService lognegocioArtista;
+
+    @Autowired
+    private ArtistaRepository artistaRepository;
 
     @GetMapping("/artistas/ver")
     public List<Artista> muestratodosArtistas(){
@@ -51,10 +57,12 @@ public class ArtistaController {
         return lognegocioArtista.eliminarArtista(idArt);
 
     }
-
-    @PostMapping("/artistas/guardar")
-    public String insertar(@RequestBody Artista objart){
-        lognegocioArtista.insertarArtista(objart);
-        return "El o La artista fue registrado(a) correctamente";
+    @PostMapping("/artistas/guardar/")
+    public ResponseEntity<Artista> insertar(@RequestBody Artista artista) {
+        Artista _art = artistaRepository.save(new Artista(artista.getId_artista(),artista.getNombreArtista(), artista.getEdad(),
+                artista.getGenero(), (float) artista.getPopularidad(), artista.getFacebook_url(),artista.getImagen_url()));
+        return new ResponseEntity<>(_art, HttpStatus.CREATED);
     }
+
+
 }

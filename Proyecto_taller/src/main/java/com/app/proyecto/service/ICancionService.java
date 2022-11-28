@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 public interface ICancionService {
 
 
-    List<Cancion> consultarTodaslasCanciones();
 
     ResponseEntity<Cancion> consultarUna(int idCan);
 

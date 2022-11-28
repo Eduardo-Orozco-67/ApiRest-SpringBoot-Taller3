@@ -1,24 +1,11 @@
 package com.app.proyecto.entity;
 
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import java.util.HashSet;
+import java.util.Set;
 
-import com.app.proyecto.entity.Artista;
+import javax.persistence.*;
 
 @Entity
 @Table (name = "tb_album")
@@ -27,28 +14,24 @@ public class Album {
 	@Id	
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column (name = "Id_album")
-	private int id;
+	private int idAlbum;
 	
 	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn (name = "id_artista", referencedColumnName = "id_artista")
 	private Artista artista;
 	
-	//Utiliza join table para hacer larelacion muchos a muchos y generar la tabla 
-	@JoinTable(
-	        name = "relacion_album_cancion",
-	        joinColumns = @JoinColumn(name = "id_Album", nullable = false),
-	        inverseJoinColumns = @JoinColumn(name="id_Cancion", nullable = false)
-	    )
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Cancion> canciones;
-	
-	public void addCancion(Cancion canc){
-        if(this.canciones == null){
-            this.canciones = new ArrayList<>();
-        }
-        this.canciones.add(canc);
-    }
-	
+	//Utiliza join table para hacer larelacion muchos a muchos y generar la tabla
+	@ManyToMany(fetch = FetchType.LAZY,
+			cascade = {
+					CascadeType.PERSIST,
+					CascadeType.MERGE
+			})
+	@JoinTable(name = "relacion_album_cancion",
+			joinColumns = { @JoinColumn(name = "Id_album") },
+			inverseJoinColumns = { @JoinColumn(name = "Id_cancion") })
+	@JsonIgnore
+	private Set<Cancion> canciones1 = new HashSet<>();
+
 	@Column (name = "Nombre_album")
 	private String nombre_album;
 	
@@ -68,15 +51,12 @@ public class Album {
 	private String imagen_url;
 
 	public Album() {
-		super();
 	}
 
-	public Album(int id, Artista artista, List<Cancion> canciones, String nombre_album, int lanzamiento,
-			String productora, String tipo, String no_canciones, String imagen_url) {
-		super();
-		this.id = id;
+	public Album(int idAlbum, Artista artista, Set<Cancion> canciones, String nombre_album, int lanzamiento, String productora, String tipo, String no_canciones, String imagen_url) {
+		this.idAlbum = idAlbum;
 		this.artista = artista;
-		this.canciones = canciones;
+		this.canciones1 = canciones;
 		this.nombre_album = nombre_album;
 		this.lanzamiento = lanzamiento;
 		this.productora = productora;
@@ -85,12 +65,12 @@ public class Album {
 		this.imagen_url = imagen_url;
 	}
 
-	public int getId() {
-		return id;
+	public int getIdAlbum() {
+		return idAlbum;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdAlbum(int id) {
+		this.idAlbum = id;
 	}
 
 	public Artista getArtista() {
@@ -99,14 +79,6 @@ public class Album {
 
 	public void setArtista(Artista artista) {
 		this.artista = artista;
-	}
-
-	public List<Cancion> getCanciones() {
-		return canciones;
-	}
-
-	public void setCanciones(List<Cancion> canciones) {
-		this.canciones = canciones;
 	}
 
 	public String getNombre_album() {
@@ -155,6 +127,27 @@ public class Album {
 
 	public void setImagen_url(String imagen_url) {
 		this.imagen_url = imagen_url;
-	}	
-	
+	}
+
+	public Set<Cancion> getCanciones() {
+		return canciones1;
+	}
+
+	public void setCanciones(Set<Cancion> canciones) {
+		this.canciones1 = canciones;
+	}
+
+	public void addCancion(Cancion tag) {
+		this.canciones1.add(tag);
+		tag.getAlbums().add(this);
+	}
+
+	public void removeCancion(Integer tagId) {
+		Cancion tag = this.canciones1.stream().filter(t -> t.getIdCancion() == tagId).findFirst().orElse(null);
+		if (tag != null) {
+			this.canciones1.remove(tag);
+			tag.getAlbums().remove(this);
+		}
+	}
+
 }
