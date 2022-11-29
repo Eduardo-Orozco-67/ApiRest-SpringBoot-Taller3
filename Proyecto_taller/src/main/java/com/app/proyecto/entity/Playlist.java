@@ -105,4 +105,9 @@ public class Playlist{
 		}
 	}
 
+	public void addCancion2(Cancion tag2){
+		this.canciones.add(tag2);
+		tag2.getPlaylists().add(this);
+	}
+
 }

@@ -150,4 +150,9 @@ public class Album {
 		}
 	}
 
+	public void addCancion2(Cancion tag2){
+			this.canciones1.add(tag2);
+			tag2.getAlbums().add(this);
+	}
+
 }
