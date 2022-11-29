@@ -13,7 +13,7 @@ principales de este informe son:
 definir sus datos de perfil personal y crear listas de reproducción de música
 que el usuario guarda en su biblioteca.
 
-* La dirección base de la API web es https://unachotify.com/api
+* La dirección base de la API web es: https://u-beat.herokuapp.com/swagger-ui.html#
 
 * La API debe considerar la administración de Artistas, Álbum y Canciones.
 
