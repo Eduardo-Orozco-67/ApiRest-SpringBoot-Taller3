@@ -7,8 +7,6 @@ import org.springframework.http.ResponseEntity;
 
 public interface IPlaylistService {
 
-    List<Playlist> consultarTodoslosArtistas();
-
     ResponseEntity<Playlist> consultarUno(int idPlay);
 
     ResponseEntity<Playlist>consultarbyNombredePlaylis(String nombre);

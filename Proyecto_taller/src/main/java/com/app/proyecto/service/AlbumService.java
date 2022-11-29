@@ -3,12 +3,8 @@ package com.app.proyecto.service;
 import com.app.proyecto.entity.Album;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import com.app.proyecto.entity.Artista;
-import com.app.proyecto.entity.Cancion;
-import com.app.proyecto.repository.CancionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +17,6 @@ public class AlbumService implements IAlbumService{
 
     @Autowired
     private AlbumRepository AlbumRepo;
-    @Override
-    public List<Album> consultarTodoslosAlbums() {
-        List<Album> result = AlbumRepo.findAll();
-        if(result.isEmpty())
-            throw new ResourceNotFoundException("No existen albumes registrados en la BD");
-        return result;
-    }
 
     @Override
     public ResponseEntity<Album> consultarUno(int idalbum) {
@@ -63,7 +52,7 @@ public class AlbumService implements IAlbumService{
         errorResponse.put("status", HttpStatus.NOT_FOUND.toString());
 
         return AlbumRepo.findById(idalbum).map( p -> {
-                    obj.setId(idalbum);
+                    obj.setIdAlbum(idalbum);
                     AlbumRepo.save(obj);
                     return new ResponseEntity<>(okResponse, HttpStatus.OK);
                 })
