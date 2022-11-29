@@ -70,7 +70,7 @@ public class AlbumController {
         _album.setNo_canciones(album.getNo_canciones());
         _album.setTipo(album.getTipo());
         _album.setProductora(album.getProductora());
-        _album.setCanciones(album.getCanciones());
+
         return new ResponseEntity<>(albumRepository.save(_album), HttpStatus.OK);
     }
 

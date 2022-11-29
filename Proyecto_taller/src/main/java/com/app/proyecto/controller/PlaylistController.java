@@ -54,7 +54,7 @@ public class PlaylistController {
         playlist1.setNombre(playlist.getNombre());
         playlist1.setUsuario(playlist.getUsuario());
         playlist1.setFecha_creacion(playlist.getFecha_creacion());
-        playlist1.setCanciones(playlist.getCanciones());
+
         return new ResponseEntity<>(playlistRepository.save(playlist1), HttpStatus.OK);
     }
 
