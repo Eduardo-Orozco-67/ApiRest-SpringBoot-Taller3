@@ -124,7 +124,7 @@ public class CancionController {
     }
 
     @PostMapping("/cancion/{cancionId}/{albumId}/guardar4")
-    public ResponseEntity<Cancion> insertar_cancion_album(@PathVariable(value = "cancionId") Integer canid, @PathVariable(value = "albumId") Integer albid, @RequestBody Cancion cancion)  {
+    public ResponseEntity<Cancion> insertar_cancion_album(@PathVariable(value = "cancionId") Integer canid, @PathVariable(value = "albumId") Integer albid)  {
 
         Cancion tag = albumRepository.findById(albid).map(album -> {
             int tagId = canid;
@@ -138,14 +138,14 @@ public class CancionController {
                 return _tag;
             }
 
-            return cancionRepository.save(cancion);
+            return null;
         }).orElseThrow(() -> new ResourceNotFoundException("Not found Album with id = " + albid));
 
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/cancion/{cancionId}/{playId}/guardar3")
-    public ResponseEntity<Cancion> insertar_cancion_playlist(@PathVariable(value = "cancionId") Integer canid, @PathVariable(value = "playId") Integer playid, @RequestBody Cancion cancion)  {
+    public ResponseEntity<Cancion> insertar_cancion_playlist(@PathVariable(value = "cancionId") Integer canid, @PathVariable(value = "playId") Integer playid)  {
 
         Cancion tag = playlistRepository.findById(playid).map(playlist -> {
             int tagId = canid;
@@ -159,10 +159,10 @@ public class CancionController {
                 return _tag;
             }
 
-            return cancionRepository.save(cancion);
+            return null;
         }).orElseThrow(() -> new ResourceNotFoundException("Not found Album with id = " + playid));
 
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/canciones/actualizar/{id}")
